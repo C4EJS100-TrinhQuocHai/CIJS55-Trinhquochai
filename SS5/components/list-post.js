@@ -33,8 +33,22 @@ class ListPost extends HTMLElement {
     }
     listenChange(){
         firebase.firestore().collection('post').onSnapshot((onSnapshot)=>{
-            console.log(onSnapshot.docChanges());
+            if (firsRun) {
+                firsRun = false
+                return
+            }
+            for (const change of onSnapshot.docChanges()) {
+                console.log(getDataFromDoc(change.doc));
+                if(change.type==='abcde'){
+                    const postItemElm =document.createElement('post-item')
+                    postItemElm.setAttribute('conten',docChange.content)
+                    postItemElm.setAttribute('image',docChange.image)
+                    postItemElm.setAttribute('author',docChange.author)
+                    this._shadowRoot.queryselector('.container').appandchild(postItemElm)
+                }
+            }
         })
+
     }
 }
 window.customElements.define('list-post', ListPost)

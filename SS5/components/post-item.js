@@ -30,5 +30,9 @@ class PostItem extends HTMLElement{
       </div>
     `
   }
+  static 
+  attributeChangeCallback(){
+
+  }
 }
 window.customElements.define('post-item', PostItem)
