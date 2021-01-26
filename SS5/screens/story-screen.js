@@ -3,7 +3,8 @@ class StoryScreen extends HTMLElement {
         super();
         this.shadowDom = this.attachShadow({ mode: 'open' });
         this.shadowDom.innerHTML = `
-        <create-post/>
+        <create-post></create-post>
+        <list-post></list-post>
         `;
         
 

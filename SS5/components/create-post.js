@@ -1,7 +1,10 @@
 const style=`
 #contend{
     width:600px;
-    height:200px;
+    height:100px;
+    margin-left:300px;
+    margin-top:30px;
+    border-radius:5px;
 }
 `
 class CreatePost extends HTMLElement {
@@ -11,6 +14,7 @@ class CreatePost extends HTMLElement {
         this._shadowDom.innerHTML = `
         <div class="create-post">
         <textarea id="contend" row="10"></textarea>
+        <input id="file" type="file">
         <button id="post"> Post</button>
         </div>
 

@@ -3,6 +3,9 @@ import './screens/login-screen.js';
 import './screens/story-screen.js'
 import './components/create-post.js'
 import './components/input-wrapper.js';
+import './components/list-post.js'
+import './components/post-item.js'
+
 
 
 export function redirect(screenName) {     
