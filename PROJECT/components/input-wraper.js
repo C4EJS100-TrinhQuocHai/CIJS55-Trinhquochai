@@ -1,3 +1,8 @@
+const style=`
+    .error{
+        color:blue;
+    }
+`
 class Inputwraper  extends HTMLElement{
     constructor(){
         super()
@@ -5,6 +10,9 @@ class Inputwraper  extends HTMLElement{
         this.type=this.getAttribute('type')
         this.placeholder=this.getAttribute('placeholder')
         this._shadowDom.innerHTML = `
+        <style>
+            ${style}
+        </style>
         <div>
             <input type="${this.type}" placeholder="${this.placeholder}">
             <div class="error"> </div>
@@ -17,6 +25,9 @@ class Inputwraper  extends HTMLElement{
     }
     set value(value){
         this._shadowDom.querySelector('input').value=value
+    }
+    setErr(err){
+        this._shadowDom.querySelector('.error').innerText=err
     }
 }
 window.customElements.define('input-wraper',Inputwraper)

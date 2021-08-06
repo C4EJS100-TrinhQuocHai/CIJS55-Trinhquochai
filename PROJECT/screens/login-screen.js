@@ -1,5 +1,4 @@
 import { redirect } from "../index.js"
-
 const style = `
 *{
     margin:0;
@@ -24,7 +23,7 @@ const style = `
     height: 100vh;
 }
 `
-class RegisterScreens extends HTMLElement {
+class LoginScreens extends HTMLElement {
     constructor() {
         super()
         this._shadowRoot = this.attachShadow({ mode: 'open' })
@@ -37,23 +36,23 @@ class RegisterScreens extends HTMLElement {
             <div class="title">
                     share story
             </div>
-            <input-wraper type="text" id="name" placeholder="fullname"></input-wraper>
+            
             <input-wraper type="email" id="email" placeholder="email"></input-wraper>
             <input-wraper type="password" id="pass" placeholder="password"></input-wraper>
-            <input-wraper type="password" id="confirm-password" placeholder="comfirm-password"></input-wraper>
+            
             <button class="btn">
-                Register
+                Login
             </button>
             <div >
-               <p> Alread have an account? </p>
-               <a href="#" id="redirect">LOGIN</a>
+               <p> Alread  don't have an account? </p>
+               <a href="#" id="redirect">Register</a>
             </div>
 
         </form>
     </div>
         `
-        this._shadowRoot.getElementById('redirect').addEventListener('click',()=>{
-            redirect('login')
+        this._shadowRoot.getElementById('redirect').addEventListener('click', () => {
+            redirect('register')
         })
         this._shadowRoot.getElementById('register-form')
             .addEventListener('submit', (e) => {
@@ -63,54 +62,42 @@ class RegisterScreens extends HTMLElement {
                 //console.log( this._shadowRoot.getElementById('email').value)
                 //console.log( this._shadowRoot.getElementById('pass').value)
                 // console.log( this._shadowRoot.getElementById('comfirm-password').value)
-                const name = this._shadowRoot.getElementById('name').value
                 const email = this._shadowRoot.getElementById('email').value
                 const pass = this._shadowRoot.getElementById('pass').value
-                const confirmpass = this._shadowRoot.getElementById('confirm-password').value
-                let isValid=true;
-                if (name.trim() === '') {
-                    this._shadowRoot.getElementById('name').setErr('please nhap name!');
-                    isValid=false;
-                } else {
-                    this._shadowRoot.getElementById('name').setErr('');
-                }
+                let isValid = true;
                 if (email.trim() === '') {
                     this._shadowRoot.getElementById('email').setErr('please nhap email!');
-                    isValid=false;
+                    isValid = false;
                 } else {
                     this._shadowRoot.getElementById('email').setErr('');
                 }
                 if (pass.trim() === '') {
                     this._shadowRoot.getElementById('pass').setErr('please nhap mat khau!');
-                    isValid=false;
+                    isValid = false;
                 } else {
                     this._shadowRoot.getElementById('pass').setErr('');
                 }
-                if (confirmpass.trim() === '') {
-                    this._shadowRoot.getElementById('confirm-password').setErr('please nhap lai mat khau!');
-                    isValid=false;
-                } else if (pass != confirmpass) {
-                    this._shadowRoot.getElementById('confirm-password').setErr('mật khẩu không trùng khớp!');
-                    isValid=false;
-                }else if(pass===confirmpass){
-                    this._shadowRoot.getElementById('confirm-password').setErr('');
-                }
+                if (isValid) {
+                    firebase.auth().signInWithEmailAndPassword(email, pass).then((res) => {
+                        console.log(res);
+                        //alert('đăng nhập thành công!')
+                        const user = {
+                            id: res.user.uid,
+                            email: res.user.email,
+                            displayName: res.user.displayName
 
-                if(isValid){
-                    firebase.auth().createUserWithEmailAndPassword(email,pass).then((res)=>{
-                       alert(' bạn đã đăng kí thành công');
-                    
-                       firebase.auth().currentUser.sendEmailVerification()
-                       firebase.auth().currentUser.updateProfile({
-                           displayName: name
-                       })
-                       redirect('login')
-                    }).catch((err)=>{
+
+                        }
+                        window.currentUser = user
+                        redirect('story')
+                        //console.log(user); 
+                        // lưu vào biến global biến được sử dụng ở nhiều nơi
+                    }).catch((err) => {
                         alert(err.message)
                     })
                 }
-                
+
             })
     }
 }
-window.customElements.define('register-screens', RegisterScreens)
+window.customElements.define('login-screen', LoginScreens)
