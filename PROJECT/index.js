@@ -3,6 +3,10 @@ import './screens/login-screen.js'
 import'./components/input-wraper.js'
 import './screens/story-screen.js'
 import './components/header.js'
+import './components/create-post.js'
+import './components/list-post.js'
+import './components/post-item.js'
+import './utils.js'
 redirect('register')
 export function redirect(screenName){
     if(screenName ==='login'){

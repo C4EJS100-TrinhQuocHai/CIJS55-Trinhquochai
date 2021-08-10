@@ -5,6 +5,7 @@ const style=`
     margin-left:300px;
     margin-top:30px;
     border-radius:5px;
+    background:tomato;
 }
 `
 class CreatePost extends HTMLElement {

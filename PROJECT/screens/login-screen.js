@@ -79,7 +79,7 @@ class LoginScreens extends HTMLElement {
                 }
                 if (isValid) {
                     firebase.auth().signInWithEmailAndPassword(email, pass).then((res) => {
-                        console.log(res);
+                        //console.log(res);
                         //alert('đăng nhập thành công!')
                         const user = {
                             id: res.user.uid,

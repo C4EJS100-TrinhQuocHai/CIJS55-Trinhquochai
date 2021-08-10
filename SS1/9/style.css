@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image:url('login3.jpg');
+    background-size: cover;
+
+}
+#container{
+    border: 1px solid black;
+    width: 300px;
+    height: 350px;
+    margin: 0 auto;
+    margin-top: 120px;
+    background-color:rgb(210, 216, 228);
+    padding: 20px 20px;
+    border-radius: 15px;
+}
+#container #login {
+    text-align: center;
+}
+
+#container input,label {
+    display: block;
+    width: 100%;
+}
+input{
+    padding: 10px;
+    border-radius: 5px;
+}
+label{
+    margin-bottom: 5px;
+}
+#login1{
+    width: 150px;
+    height: 30px;
+    background-color: rgb(176, 184, 184);
+    margin-left: 50px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+#login1:hover{
+    background-color: tomato;
+}
+.dangnhap{
+    margin-top: 40px;
+    text-align: center;
+}

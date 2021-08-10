@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+
+
+
+
+.box{
+    border: 1px solid teal;
+    background-color: #ddd;
+    margin-top: 20px;
+    padding: 0px 20px;
+
+}
+#box2,#box3,#box4{
+    width: 30%;
+    float: right;
+
+}
+#box2,#box3{
+    margin-left:5% ;
+}
+#box5{
+    background-color: red;
+}
+#cl{
+    clear: both;
+}
