@@ -38,12 +38,47 @@ view.setActiveScreen = (screenName) => {
             break;
         case 'chatPage':
             document.getElementById('app').innerHTML=component.chatPage;
-            document.getElementById('welcome-user').innerHTML=`welcome ${model.currentUser.displayName}`;
+            const sendMessageForm=document.getElementById('send-message-form')
+            sendMessageForm.addEventListener('submit',(e)=>{
+                e.preventDefault()
+                //console.log(sendMessageForm.message.value);
+                const message={
+                    content:sendMessageForm.message.value,
+                    owner:model.currentUser.email
+                   
+                }
+                const messageFromBot={
+                    content:sendMessageForm.message.value,
+                    owner:'Bot'
+                }
+               
+                view.addMesage(message)
+                view.addMesage(messageFromBot)
 
+            })
 
             break;
     }
 }
 view.setErrorMesage=(elementId,content)=>{
     document.getElementById(elementId).innerText=content
+}
+view.addMesage=(message)=>{
+    //tao 1 the div
+    const messageWrapper =document.createElement('div');
+    messageWrapper.classList.add('message')
+    if(message.owner===model.currentUser.email){
+        messageWrapper.classList.add('mine')
+        messageWrapper.innerHTML=`
+        <div clasd="content"> ${message.content}</div>
+        `
+    }else{
+        messageWrapper.classList.add('their')
+        messageWrapper.innerHTML=`
+        <div class="owner"> ${message.owner}</div>
+        <div clasd="content"> ${message.content}</div>
+        `
+    }
+    //console.log(messageWrapper)
+    document.querySelector('.list-message').appendChild(messageWrapper)
 }

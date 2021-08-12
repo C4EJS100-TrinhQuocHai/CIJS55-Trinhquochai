@@ -12,7 +12,16 @@ window.onload=()=>{
   firebase.initializeApp(firebaseConfig);
   //console.log(firebase.app());
   //khi chay ham lan dau,khi login,khi logout
-  
-  view.setActiveScreen('registerPage')
+  firebase.auth().onAuthStateChanged((user) =>{
+    //console.log(user);
+    if(user){
+
+      view.setActiveScreen('chatPage')
+    }else{
+      view.setActiveScreen('registerPage')
+    }
+
+  })
+  //view.setActiveScreen('loginPage')
 
 }

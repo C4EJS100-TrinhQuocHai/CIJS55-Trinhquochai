@@ -1,0 +1,56 @@
+@media (max-width:768px){
+    .login-container{
+        height: 100vh;
+        background-image: url(../img/chat-app.jpg);
+        background-size:cover;
+        display: flex;
+        justify-content: center;
+    }
+    .login-container #login-form{
+        height: 100vh;
+        background-color: #fff;
+        width: 70%;
+        padding: 10px 15px;}
+    .login-container .login-header{
+        font-size: 20px;
+        color: #535353;
+        text-align: center;
+        font-weight: 400;
+         font-family:Arial, Helvetica, sans-serif;
+        margin-bottom: 20px;
+        margin-top: 50px;
+    }
+    .input-wrapper input{
+        padding: 4px;
+        border: 1px solid#dbdbdb;
+        border-radius: 5px;
+        width: 100%;
+    }
+    .form-action{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+    }
+    .btn{
+        border-width: 1px;
+        background-color: #037BFE;
+        padding: 6px 10px;
+        border-radius: 5px;
+        color: #fff;
+        
+    }
+    .register-container{
+        height: 100vh;
+        background-image: url(../img/chat-app1.jpg);
+        background-size:cover;
+        display: flex;
+        justify-content: center;
+    }
+    .register-container #register-form{
+        height: 100vh;
+        background-color: #fff;
+        width: 70%;
+        padding: 50px 15px;
+    }
+}
