@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Lưu danh sách sản phẩm trên local </title>
+</head>
+<body>
+    <div class="them-moi-san-pham">
+        <label for="hinhAnh"> Hình Ảnh Sản Phẩm</label>
+        <input type="text" id="hinhAnh"> 
+
+        <label for="ten"> Tên Sản Phẩm</label>
+        <input type="text" id="ten">
+
+        <label for="giaGoc"> Giá Gốc </label>
+        <input type="number" id="giaGoc">
+
+        <label for="phamTramGiamGia">Phần Trăm Giảm Giá </label>
+        <input type="number" id="phanTramGiamGia">
+
+        <label for="khuVuc">Khu Vực </label>
+        <input type="text" id="khuVuc">
+
+        <button class="btn"  onclick="onClickTaoSanPham()"> Tạo Sản Phẩm </button>
+    </div>
+    <script src="index.js"></script>
+    <script src="sanPham.js"></script>
+    <script src="hotro.js"></script>
+</body>
+</html>

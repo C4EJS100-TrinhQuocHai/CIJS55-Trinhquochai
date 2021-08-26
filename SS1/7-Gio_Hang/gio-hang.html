@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="giohang.css">
+    <title> Hien thi gio hang </title>
+    <script src="sanPham.js"></script>
+    <script src="giohang.js"></script>
+    
+    
+</head>
+
+<body>
+    <div class="gio-hang" id="gio-hang">
+        
+    </div>
+    <script>
+        hienThiDanhSachItemGioHang();
+        function hienThiDanhSachItemGioHang(){
+            /*  Buoc 1: lay danh sach item tu local len
+                Buoc 2: chuyen danh sach item gio hang thanh HTML
+                Buoc 3: truy cap node gio hang de hien thi */
+                var danhSachItemGioHang=layGioHangTuLocalStorage();// b1
+                var HTML= chuyenDanhSachItemGioHangSangHTML(danhSachItemGioHang);
+                var nodeGioHang=document.getElementById('gio-hang');
+                nodeGioHang.innerHTML=HTML;
+        }
+        function chuyenDanhSachItemGioHangSangHTML(danhSachItemGioHang){
+            var htmlTong='';
+            for(var i=0;i<danhSachItemGioHang.length;i++){
+                htmlTong=htmlTong +chuyenDoiTuongItemGioHangSangHTML(danhSachItemGioHang[i]);
+            }
+            return htmlTong;
+        }
+        
+        function chuyenDoiTuongItemGioHangSangHTML(itemGioHang) {
+            console.log(itemGioHang.idSanPham);
+            // item gio hang chi gom co id va soLuong
+            /* Buoc 1: tu id sanpham  */
+            var sanPham=laySanPhamTheoId(itemGioHang.idSanPham);
+            console.log(sanPham);
+            var tongTien=sanPham.tinhGiaBan() * itemGioHang.soLuong;
+            var html = `<div class="item-gio-hang"id="xoa">
+            <div class="hinhAnh">
+                <img src="${sanPham.hinhanh}">
+            </div>
+            <p class="ten"> ${sanPham.ten}</p>
+            <div class="gia">
+                <span class="giaGoc">${sanPham.giaGoc} đ</span>
+                <span class="giaBan">${sanPham.tinhGiaBan()}đ</span>
+
+            </div>
+            <input type="number" class="soLuong" value="${itemGioHang.soLuong}">
+            <p class="tongTien"> ${tongTien}  đ </p>
+            <div class="hanhDong">
+                <i class="far fa-trash-alt" ></i>
+            </div>
+        </div>`;
+
+            return html;
+        }
+        
+    </script>
+        
+    <!--  Bước 1: xây dựng giao diện hiển thị 1 item giỏ hàng : html ,css 
+        Bước 2: viết hàm gia lap chuyển đổi 1 đối tượng item thành HTML
+        Bước 3:  viết hàm gia lap chuyển đổi 1 danh sách item giỏ hàng thành HTML
+        Bước 4 : gắn HTML item giỏ hàng  vào node HMTL 
+        Buoc 5: viet ham load danh sach o buoc 3
+        Buoc 6: viet ham chuyen doi doi tuong o buoc 2 sang HTML  -->
+    <script src="https://kit.fontawesome.com/9d7bab43db.js" crossorigin="anonymous"></script>
+    
+
+</body>
+
+</html>

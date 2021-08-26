@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dựa vào ID của đối tượng lấy lên nội dung của toàn bộ đối tượng </title>
+</head>
+<body>
+    <!-- cho người dùng nhập ID sản phẩm khi bấm nút tìm kiếm sẽ hiển thị ra đối tượng này  -->
+    <input type="text" id="idSanPham" placeholder="Nhập ID sản phẩm " >
+    <button onclick="onClickTimKiemSanPham()"> Tìm kiếm </button>
+    <div id="ketQuaTimKiem">
+       
+    </div>
+    <script>
+        function onClickTimKiemSanPham(){
+            // bước 1: truy xuất node idsanpham de lay ra id sanpham
+            var nodeIdSanPham=document.getElementById('idSanPham');
+            var idSanPham=nodeIdSanPham.value;
+            //console.log(idSanPham);
+            // Bước 2: truy xuất đối tượng theo ID
+            var sanPham= truyXuatSanPhamTheoId(idSanPham);
+            console.log(sanPham);
+            // Bước 3: chuyển đối tượng thành file HTML;
+            var HTML= chuyenDoiTuongSanPhamThanhHTML(sanPham);
+            // Bước 4: hiển thị kết quả tìm kiếm ra node ketQuaTimKiem
+            var nodeKetQuaTimKiem= document.getElementById('ketQuaTimKiem');
+            nodeKetQuaTimKiem.innerHTML=HTML;
+        }
+    </script>
+<script src="sanPham.js"></script>
+<script src="hotro.js"></script>
+</body>
+</html>

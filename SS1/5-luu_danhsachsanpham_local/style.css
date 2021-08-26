@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.them-moi-san-pham{
+    width: 50%;
+    border: 1px solid #444;
+    margin: auto;
+    margin-top: 20px;
+    padding: 30px;
+    height: 520px;
+    border-radius: 5px;
+   
+
+}
+.them-moi-san-pham label,input{
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+.them-moi-san-pham label{
+    margin-top: 20px;
+}
+.them-moi-san-pham input{
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border-style: groove;
+    border: 1px solid blue;
+}
+.btn{
+    width: 100%;
+    padding: 8px;
+    margin-top: 15px;
+    background-color: tomato;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 15px;
+    border-style: groove;
+    cursor: pointer;
+}

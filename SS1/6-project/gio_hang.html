@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/gio_hang.css">
+    <title>Hien Thi Gio Hang </title>
+    <script src="hotro.js"></script>
+    <script src="sanPham.js"></script>
+    <script src="giohang.js"></script>
+    
+    
+</head>
+
+<body>
+    <div class="gio-hang" id="gio-hang">
+    
+    </div>
+    <script>
+        function hienThiDanhSachItemGioHang(){
+            /*  Buoc 1: lay danh sach item tu local len
+                Buoc 2: chuyen danh sach item gio hang thanh HTML
+                Buoc 3: truy cap node gio hang de hien thi */
+                var danhSachItemGioHang=layGioHangTuLocalStorage();// b1
+                var HTML= chuyenDanhSachItemGioHangSangHTML(danhSachItemGioHang);
+                var nodeGioHang=document.getElementById('gio-hang');
+                nodeGioHang.innerHTML=HTML;
+        }hienThiDanhSachItemGioHang()
+        /*  chuyen doi 1 danh sach thanh HTML
+        input:danh sach item gio hang
+        output:hien thi html danh sach item gio hang */
+        function chuyenDanhSachItemGioHangSangHTML(danhSachItemGioHang){
+            var htmlTong='';
+            for(var i=0;i<danhSachItemGioHang.length;i++){
+                htmlTong=htmlTong +chuyenDoiTuongItemGioHangSangHTML(danhSachItemGioHang[i]);
+            }
+            return htmlTong;
+        }
+        /*  mo ta doi tuong thanh HTML
+        input: doi tuong gio hang
+        out put: HTML hien thi gio hang  */
+        function chuyenDoiTuongItemGioHangSangHTML(itemGioHang){
+            console.log(itemGioHang.idSanPham);
+            // item gio hang chi gom co id va soLuong
+            /* Buoc 1: tu id sanpham  */
+            var sanPham=laySanPhamTheoId(itemGioHang.idSanPham);
+            console.log(sanPham);
+            var html=`<div class="item-gio-hang">
+            <div class="hinhAnh">
+                <img src="https://anh.eva.vn/upload/4-2017/images/2017-10-30/1509353233-10-30-2017-3-46-33-pm.jpg">
+            </div>
+            <p class="ten"> Iphone 5</p>
+            <div class="gia">
+                <span class="giaGoc">5000000 đ</span>
+                <span class="giaBan">4000000 đ</span>
+
+            </div>
+            <input type="number" class="soLuong" value="1">
+            <p class="tongTien"> 4000000 đ </p>
+            <div class="hanhDong">
+                <i class="far fa-trash-alt"></i>
+            </div>
+        </div>`;
+        
+            return html;
+        }
+    </script>
+    <!--  Bước 1: xây dựng giao diện hiển thị 1 item giỏ hàng : html ,css 
+        Bước 2: viết hàm gia lap chuyển đổi 1 đối tượng item thành HTML
+        Bước 3:  viết hàm gia lap chuyển đổi 1 danh sách item giỏ hàng thành HTML
+        Bước 4 : gắn HTML item giỏ hàng  vào node HMTL 
+        Buoc 5: viet ham load danh sach o buoc 3
+        Buoc 6: viet ham chuyen doi doi tuong o buoc 2 sang HTML  -->
+    <script src="https://kit.fontawesome.com/9d7bab43db.js" crossorigin="anonymous"></script>
+    
+</body>
+
+</html>
